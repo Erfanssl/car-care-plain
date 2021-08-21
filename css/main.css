@@ -4,9 +4,25 @@
 }
 
 body {
-    background-color: #637081;
-    background-image: linear-gradient(315deg, #637081 0%, #7c98b3 74%);
+    background:
+            radial-gradient(circle, transparent 20%, slategray 20%, slategray 80%, transparent 80%, transparent),
+            radial-gradient(circle, transparent 20%, slategray 20%, slategray 80%, transparent 80%, transparent) 50px 50px,
+            linear-gradient(#A8B1BB 8px, transparent 8px) 0 -4px,
+            linear-gradient(90deg, #A8B1BB 8px, transparent 8px) -4px 0;
+    background-color: slategray;
+    background-size:100px 100px, 100px 100px, 50px 50px, 50px 50px;
     position: relative;
+}
+
+body.bg {
+    background-color:black;
+    background-image:
+            radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+            radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+            radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px),
+            radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 2px, transparent 30px);
+    background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
+    background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
 }
 
 .container {
@@ -112,6 +128,7 @@ body {
     font-family: fantasy;
     font-size: 25px;
     letter-spacing: 1px;
+    background-color: rgba(0, 0, 0, .3);
 }
 
 #score-container p {
@@ -145,7 +162,7 @@ body {
     top: 35%;
     background-color: #abe9cd;
     background-image: linear-gradient(315deg, #abe9cd 0%, #3eadcf 74%);
-    font-size: 22px;
+    font-size: 20px;
 }
 
 .score-up {

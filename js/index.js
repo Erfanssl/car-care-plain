@@ -40,16 +40,22 @@ startBtn.onclick = () => {
     container.style.filter = 'unset';
     modal.classList.add('hide');
     scoreContainer.classList.remove('hide');
-    road.style.animation = `road steps(200) ${ state.speed * 3 }s infinite`;
-    mainCar.style.transition = `all ${ state.speed }s`;
+    road.style.animation = `road steps(200) ${ 3 / state.speed }s infinite`;
+    mainCar.style.transition = `all ${ 1 - (state.speed - 1) }s`;
     scoreEl.innerText = state.score;
     boosterEl.innerText = state.booster;
     levelEl.innerText = state.level;
+
+    if (document.body.classList.contains('bg')) document.body.classList.remove('bg');
+
     const interval = setInterval(() => {
         state.speed += .1;
         updateSpeed(state.speed);
         state.level += 1;
         levelEl.innerText = state.level;
+        if (document.body.classList.contains('bg')) {
+            document.body.classList.remove('bg');
+        } else document.body.classList.add('bg');
 
         if (state.level >= 9) {
             state.finish = true;
@@ -80,7 +86,7 @@ function gameEnd() {
     } else {
         [].slice.call(modal.children).forEach(child => { if (!child.classList.contains('win')) child.classList.remove('hide') });
     }
-    modalScoreEl.innerText = `Score is: ${ numberSeparator(state.score) }`;
+    modalScoreEl.innerText = `Score: ${ numberSeparator(state.score) }`;
     state.start = false;
     state.finish = true;
     container.style.filter = 'blur(3px)';
@@ -112,7 +118,7 @@ function renderCar (speed) {
 
         // Generate a new img element
         const carImage = new Image();
-        const source = `../assets/car${ Math.ceil(Math.random() * 6) }.svg`;
+        const source = `../assets/car${ Math.ceil(Math.random() * 7) }.svg`;
         carImage.src = source;
         carImage.classList.add('car');
         carImage.style.animation = `car steps(400) ${ 4 / speed }s 1`;
